@@ -3,7 +3,9 @@ import requests
 import os
 import streamlit as st
 import yaml
-import pandas as pd
+from dotenv import load_dotenv
+
+load_dotenv()
 
 with open("lib/util/config.yaml", "r") as file:
     config = yaml.safe_load(file)
@@ -14,7 +16,7 @@ api_url = os.getenv('CHATURL', config['API']['CHATURL'])
 @ st.cache_data
 def chat(input: str, source=False) -> json:
     if source:
-        full_url = api_url + "?source=true"
+        full_url = api_url + "/qachat?source=true"
     else:
         full_url = api_url
 
@@ -25,7 +27,6 @@ def chat(input: str, source=False) -> json:
 @ st.cache_data
 def buddyChat(input: str) -> json:
     full_url = api_url + "/chatty"
-
     response = requests.post(full_url, json={"input": input})
     return response.json()
 

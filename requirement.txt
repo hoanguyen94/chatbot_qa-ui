@@ -1,2 +1,5 @@
 streamlit
 PyYAML
+pandas
+numpy
+python-dotenv
