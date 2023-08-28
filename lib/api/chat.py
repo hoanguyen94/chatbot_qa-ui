@@ -55,13 +55,6 @@ def summarize(file: file) -> str:
 
 
 @ st.cache_data
-def uploadInfluencer(file: json) -> requests.Response:
-    full_url = api_url + "/influencer"
-    response = requests.post(full_url, json=file)
-    return response
-
-
-@ st.cache_data
 def sqlChat(input: str) -> json:
     full_url = api_url + "/sql-chat"
     response = requests.post(full_url, json={"input": input})

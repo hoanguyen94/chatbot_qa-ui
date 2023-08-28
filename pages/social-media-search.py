@@ -1,9 +1,11 @@
 import streamlit as st
-from lib.api.chat import uploadInfluencer, sqlChat
+from lib.api.chat import sqlChat
+from lib.api.influencers import uploadInfluencer, getAllInfluencer, delAllInfluencer
 import pandas as pd
-from lib.util.helper import splitChunk
+from lib.util.helper import splitChunk, checkColumns
 import numpy as np
 import time
+from lib.pages.socialMediaSchema import influencerColumns, exampleDF_Influencers
 
 st.markdown("# Social media research :mortar_board:")
 
@@ -24,32 +26,31 @@ def updateDatabase(df: pd.DataFrame):
 
 
 def visualize(df: pd.DataFrame):
-    st.write(dataframe)
+    st.write("Data table")
+    st.write(df)
     st.write("Summary statistics")
-    st.write(dataframe.describe())
+    st.write(df.describe())
 
     # columns
-    st.header("Visualization")
-    cols = tuple(dataframe.columns.values)
-    xAxis = st.radio("Select column for x axis",
-                     cols, index=3, horizontal=True)
-    YAxis = st.radio("Select column for y axis", cols,
-                     index=6, horizontal=True)
-    st.subheader("Bar chart")
+    st.write("Visualization")
+    cols = tuple(influencerColumns)
+    xAxis = st.selectbox("Select column for x axis",
+                         cols, index=3)
+    YAxis = st.selectbox("Select column for y axis", cols,
+                         index=6)
+    st.write("Bar chart")
 
-    st.bar_chart(dataframe, x=xAxis, y=YAxis)
+    st.bar_chart(df, x=xAxis, y=YAxis)
 
 
-action = st.radio("Would you like to", ("upload data", "chat with data"))
+action = st.radio("Would you like to", ("upload data",
+                  "chat with data", "show all data", "delete all data"))
 
 if action == "upload data":
     uploaded_file = st.file_uploader("Influencer file :man-surfing:", "csv")
 
     # show example
-    example = pd.DataFrame({'channel': ["youtube", "tiktok"], 'userid': ["samso", "peter123"],
-                            'name': ['Sam', 'Peter'], "category1": ["music", "movies"], "category2": ["pop", "cartoon"],
-                            "country": ["Germany", "Austria"], "followers": [1000, 5000], "views": [10000, 4000],
-                           "likes": [100, 500], "comments": [200, 400]})
+    example = exampleDF_Influencers
 
     exampleButton = st.checkbox("Show example of CSV file")
     if exampleButton:
@@ -57,6 +58,9 @@ if action == "upload data":
 
     if uploaded_file is not None:
         dataframe = pd.read_csv(uploaded_file)
+
+        # check columns
+        checkColumns(dataframe.columns, influencerColumns)
 
         # save to state
         st.session_state.data = uploaded_file
@@ -68,7 +72,7 @@ if action == "upload data":
         if updateDB == "Yes":
             st.write(updateDatabase(dataframe))
 
-else:
+elif action == "chat with data":
     # Initialize chat history
     if "sqlChat" not in st.session_state:
         st.session_state.sqlChat = []
@@ -112,3 +116,14 @@ else:
 
     if source:
         st.json(st.session_state.sqlIntermediateSteps)
+
+elif action == "show all data":
+    # get all data
+    data = getAllInfluencer().json()
+    visualize(pd.DataFrame(data))
+
+elif action == "delete all data":
+    # delete all data
+    response = delAllInfluencer()
+    if response.status_code == 201:
+        st.write('Deleted all data successfully')
