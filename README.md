@@ -1,4 +1,4 @@
-```markdown
+
 # Chatbot QA-UI
 
 Welcome to **Chatbot QA-UI**! This application serves as your personal research assistant, offering you a range of functionalities to aid your research process.
