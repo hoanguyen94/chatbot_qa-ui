@@ -19,9 +19,9 @@ Welcome to **Chatbot QA-UI**! This application serves as your personal research 
 
 ## Access & Support
 
-- **Backend Repository:** For the backend of this app, please visit [this link](https://github.com/hoanguyen94/chatbot_qa).
+- **Backend Repository:** For the backend of this app, please visit https://github.com/hoanguyen94/chatbot_qa.
 
-- **Application Access:** Access the app at [this link](http://skind-Publi-1U4LWQ3FYO33O-1341803704.ap-southeast-1.elb.amazonaws.com).
+- **Application Access:** Access the app at http://skind-Publi-1U4LWQ3FYO33O-1341803704.ap-southeast-1.elb.amazonaws.com.
 
 - **Further Information:** For more details about the application and design choices, please check `Design-choices.pdf` in this repository.
 
