@@ -13,21 +13,21 @@ with open("lib/util/config.yaml", "r") as file:
 api_url = os.getenv('CHATURL', config['API']['CHATURL'])
 
 
-@ st.cache_data
+@ st.cache_data(ttl=60)
 def uploadInfluencer(file: json) -> requests.Response:
     full_url = api_url + "/influencer"
     response = requests.post(full_url, json=file)
     return response
 
 
-@ st.cache_data
+@ st.cache_data(ttl=60)
 def getAllInfluencer() -> requests.Response:
     full_url = api_url + "/influencer"
     response = requests.get(full_url)
     return response
 
 
-@ st.cache_data
+@ st.cache_data(ttl=60)
 def delAllInfluencer() -> requests.Response:
     full_url = api_url + "/influencer"
     response = requests.delete(full_url)

@@ -13,7 +13,7 @@ with open("lib/util/config.yaml", "r") as file:
 api_url = os.getenv('CHATURL', config['API']['CHATURL'])
 
 
-@ st.cache_data
+@ st.cache_data(ttl=60)
 def chat(input: str, source=False) -> json:
     if source:
         full_url = api_url + "/qachat?source=true"
@@ -24,14 +24,14 @@ def chat(input: str, source=False) -> json:
     return response.json()
 
 
-@ st.cache_data
+@ st.cache_data(ttl=60)
 def buddyChat(input: str) -> json:
     full_url = api_url + "/chatty"
     response = requests.post(full_url, json={"input": input})
     return response.json()
 
 
-@ st.cache_data
+@ st.cache_data(ttl=60)
 def checkHealth() -> requests.Response:
     full_url = api_url + "/health"
     response = requests.get(full_url)
@@ -46,7 +46,7 @@ def postPDF(file: file) -> requests.Response:
     return response
 
 
-@ st.cache_data
+@ st.cache_data(ttl=60)
 def summarize(file: file) -> str:
     full_url = api_url + "/summarize?immediateStep=true"
     data = {"paper": file}
@@ -54,7 +54,7 @@ def summarize(file: file) -> str:
     return response.json()
 
 
-@ st.cache_data
+@ st.cache_data(ttl=60)
 def sqlChat(input: str) -> json:
     full_url = api_url + "/sql-chat"
     response = requests.post(full_url, json={"input": input})

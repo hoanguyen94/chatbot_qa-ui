@@ -120,7 +120,10 @@ elif action == "chat with data":
 elif action == "show all data":
     # get all data
     data = getAllInfluencer().json()
-    visualize(pd.DataFrame(data))
+    if len(data) >= 1:
+        visualize(pd.DataFrame(data))
+    else:
+        st.write('There is no data in the database.')
 
 elif action == "delete all data":
     # delete all data
