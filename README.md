@@ -25,6 +25,8 @@ Welcome to **Chatbot QA-UI**! This application serves as your personal research 
 
 - **Further Information:** For more details about the application and design choices, please check `Design-choices.pdf` in this repository.
 
+- **Example for CSV file for social media:** For the example of CSV file for influencers in Social media search, please take a look at the file `example-influencers.csv` in this repo.
+
 - **Support:** If you have any questions or encounter any issues accessing the app, please feel free to raise an issue or contact me.
 
 Cheers!
