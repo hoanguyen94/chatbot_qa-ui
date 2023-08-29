@@ -27,6 +27,12 @@ Welcome to **Chatbot QA-UI**! This application serves as your personal research 
 
 - **Example for CSV file for social media:** For the example of CSV file for influencers in Social media search, please take a look at the file `example-influencers.csv` in this repo.
 
+- **PDF Files that have been uploaded to research buddy and research bot:** 
+  + `Training language models to follow instructions with human feedback`: [this link](https://arxiv.org/abs/2203.02155)
+  + `Llama 2: Open Foundation and Fine-Tuned Chat Models`: [this link](https://arxiv.org/abs/2307.09288)
+  + `Summary of ChatGPT/GPT-4 Research and Perspective Towards the Future of Large Language Models`: [this link](https://arxiv.org/abs/2304.01852)
+  + `Attention Is All You Need`: [this link](https://arxiv.org/abs/1706.03762)
+
 - **Support:** If you have any questions or encounter any issues accessing the app, please feel free to raise an issue or contact me.
 
 Cheers!
