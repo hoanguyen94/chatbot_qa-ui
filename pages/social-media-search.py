@@ -128,5 +128,9 @@ elif action == "show all data":
 elif action == "delete all data":
     # delete all data
     response = delAllInfluencer()
-    if response.status_code == 201:
+    if response.status_code != 201:
+        st.write(response.reason)
+        if st.checkbox("See error details"):
+            st.write(response.content)
+    else:
         st.write('Deleted all data successfully')
