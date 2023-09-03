@@ -1,6 +1,5 @@
 import streamlit as st
 from lib.api.chat import postPDF, summarize, summarizeYoutube, extractTopics
-from streamlit_tags import st_tags
 
 
 st.markdown("# Upload/ Summarize :mortar_board:")
