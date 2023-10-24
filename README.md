@@ -28,8 +28,6 @@ Welcome to **Chatbot QA-UI**! This application serves as your personal research 
 
 - **Backend Repository:** For the backend of this app, please visit https://github.com/hoanguyen94/chatbot_qa.
 
-- **Application Access:** Access the app at http://skind-Publi-1U4LWQ3FYO33O-1341803704.ap-southeast-1.elb.amazonaws.com.
-
 - **Further Information:** For more details about the application and design choices, please check `Design-choices.pdf` in this repository.
 
 - **Example for CSV file for social media:** For the example of CSV file for influencers in Social media search, please take a look at the file `example-influencers.csv` in this repo.
